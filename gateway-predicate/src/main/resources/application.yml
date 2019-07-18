@@ -1,0 +1,111 @@
+server:
+  port: 8081
+#spring:
+#  profiles:
+#    active: after_route
+#
+#---
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#      - id: after_route
+#        uri: http://httpbin.org:80/get
+#        predicates:
+#        - After=2017-01-20T17:42:47.789-07:00[America/Denver]
+#  profiles: after_route
+
+#---
+#spring:
+#  profiles:
+#    active: header_route
+#
+#---
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#      - id: header_route
+#        uri: http://httpbin.org:80/get
+#        predicates:
+#        - Header=X-Request-Id, \d+
+#  profiles: header_route
+# postman请求localhost:8081并在head配置X-Request-Id:1
+
+
+#spring:
+#  profiles:
+#    active: cookie_route
+#
+#---
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#      - id: cookie_route
+#        uri: http://httpbin.org:80/get
+#        predicates:
+#        - Cookie=name, forezp
+#  profiles: cookie_route
+# f12后document.cookie="name=forezp"刷新页面
+
+#spring:
+#  profiles:
+#    active: host_route
+#---
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#      - id: host_route
+#        uri: http://httpbin.org:80/get
+#        predicates:
+#        - Host=**.fangzhipeng.com
+#  profiles: host_route
+# postman请求localhost:8081并在head配置更改Host为www.fangzhipeng.com
+
+
+#spring:
+#  profiles:
+#    active: method_route
+#
+#---
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#      - id: method_route
+#        uri: http://httpbin.org:80/get
+#        predicates:
+#        - Method=GET
+#  profiles: method_route
+# 直接访问就可获取
+
+#spring:
+#  profiles:
+#    active: path_route
+#---
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#      - id: path_route
+#        uri: http://httpbin.org:80/get
+#        predicates:
+#        - Path=/foo/{segment}
+#  profiles: path_route
+#???
+spring:
+  profiles:
+    active: query_route
+---
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: query_route
+        uri: http://httpbin.org:80/get
+        predicates:
+        - Query=foo
+  profiles: query_route
+
